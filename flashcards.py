@@ -1,7 +1,8 @@
 from peewee import *
 from datetime import date
 import gc
-db = PostgresqlDatabase('japanese', user='postgres', password='', host='localhost', port=5432)
+db = PostgresqlDatabase('japanese', user='postgres', password='',
+                        host='localhost', port=5432)
 
 db.connect()
 
@@ -12,6 +13,8 @@ class BaseModel(Model):
 class FlashCards(BaseModel):
     word_japanese = CharField()
     word_english = CharField()
+
+db.create_tables([FlashCards])
 
 def menu():
     print("Ready to practice your Japanese? Don't worry, we're not nearly as vigilant as Duolingo. Select 'c' to create your flashcard, 'r' to read through the cards, 'd' to delete, and 'p' to test your knowledge!")
@@ -29,17 +32,18 @@ def menu():
         menu()
 
 def create():
-    print("Please input the Japanese character (Kanji, Hiragana, or Katakana) and it's English equivalent!")
-    new_word_japanese = input("What is the word in Japanese you'd like to study?")
-    new_word_english = input("What is the English meaning?")
-    new_word = FlashCards(word_japanese = new_word_japanese, word_english = new_word_english)
-    new_word.save()
-    print('Thanks for adding to the flash cards!')
+    japanese = input("Please input the Japanese character of the word you'd like to study \n")
+    english = input("Please input the English equivalent \n")
+    card = FlashCards(word_japanese=japanese, word_english=english)
+    card.save()
+    print(f"{card.word_japanese} and {card.word_english}")
+        
+
 
 def read():
     for obj in gc.get_objects():
         if isinstance(obj, FlashCards):
-            print(obj.new_word)
+            print(obj.FlashCards)
 
 def delete():
     flash = FlashCards.get(FlashCards.id == input(
@@ -71,7 +75,6 @@ def play():
     if play_again == 'y':
         play()
     else:
-            print("")
             print("Thanks for practicing today!")
 
 menu()
