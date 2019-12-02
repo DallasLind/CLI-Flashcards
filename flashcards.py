@@ -1,8 +1,9 @@
 from peewee import *
 from datetime import date
+import gc
 db = PostgresqlDatabase('japanese', user='postgres', password='', host='localhost', port=5432)
 
-
+db.connect()
 
 class BaseModel(Model):
     class Meta:
@@ -37,6 +38,12 @@ def create():
     new_word.save()
     print('Thanks for adding to the flash cards!')
 
+def read():
+    for obj in gc.get_objects():
+        if isinstance(obj, FlashCards):
+            print obj.new_word
+
+def 
 
 def play():
     correct = 0
