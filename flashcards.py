@@ -37,13 +37,12 @@ def create():
     card = FlashCards(word_japanese=japanese, word_english=english)
     card.save()
     print(f"{card.word_japanese} and {card.word_english}")
+    menu()
         
-
-
 def read():
-    for obj in gc.get_objects():
-        if isinstance(obj, FlashCards):
-            print(obj.FlashCards)
+    for all_cards in FlashCards.select():
+        print(f"\n{card.word_japanese}\n{card.word_english}")
+        menu()
 
 def delete():
     flash = FlashCards.get(FlashCards.id == input(
@@ -61,7 +60,7 @@ def play():
     for new_word in FlashCards.select():
         if a > 0:
             a -= 1
-            if input(f"{new_word.japanese}\n") == new_word.english:
+            if input(f"{new_word.word_japanese}\n") == new_word.word_english:
                 correct += 1
                 print(f"Amount of correct: {correct}")
 
@@ -69,7 +68,7 @@ def play():
                 incorrect += 1
                 print(f"Amount of incorrect: {incorrect}")
                 if input("Would you like to see the answer? y/n") == 'y':
-                    print(f"The answer is {new_word.english}")
+                    print(f"The answer is {new_word.word_english}")
     
     play_again = str(input("Would you like to practice again? Please type 'y' for yes and 'n' stop your session. "))
     if play_again == 'y':
