@@ -41,12 +41,12 @@ def create():
         
 def read():
     for all_cards in FlashCards.select():
-        print(f"\n{card.word_japanese}\n{card.word_english}")
+        print(f"\n{FlashCards.word_japanese} and {FlashCards.word_english}")
         menu()
 
 def delete():
-    flash = FlashCards.get(FlashCards.id == input(
-        "Please input the ID of the question you'd like to delete" ))
+    flash = FlashCards.get(FlashCards.word_english == input(
+        "Please input the English word of the flashcard you'd like to delete" ))
     FlashCards.delete_instance()
     FlashCards.save()
     menu()
@@ -75,6 +75,7 @@ def play():
         play()
     else:
             print("Thanks for practicing today!")
+            menu()
 
 menu()
     
