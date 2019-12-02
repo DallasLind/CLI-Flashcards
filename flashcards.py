@@ -13,7 +13,7 @@ class FlashCards(BaseModel):
 
 db.connect()
 
-db.create_tables([Japanese])
+db.create_tables([japanese])
 
 def start():
     print("Ready to practice your Japanese? Don't worry, we're not nearly as vigilant as Duolingo. Select 'c' to create your flashcard, 'r' to read through, 'u' to update existing cards, 'd' to delete, and 's' to find a specific card!")
@@ -32,4 +32,3 @@ def start():
         intro()
 
 def create():
-    
