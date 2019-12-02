@@ -7,17 +7,14 @@ class BaseModel(Model):
         database = db
 
 class FlashCards(BaseModel):
-    title = CharField()
-    character = CharField()
-    romaji = CharField()
+    word_japanese = CharField()
+    word_english = CharField()
 
 db.connect()
 
-db.create_tables([japanese])
-
-def start():
+def menu():
     print("Ready to practice your Japanese? Don't worry, we're not nearly as vigilant as Duolingo. Select 'c' to create your flashcard, 'r' to read through, 'u' to update existing cards, 'd' to delete, and 's' to find a specific card!")
-     if choice == 'c':
+    if choice == 'c':
         create()
     elif choice == 'r': 
         read()
@@ -29,6 +26,36 @@ def start():
         find_card()
     else: 
         print('Sorry that is not a valid choice, please try again')
-        intro()
+        menu()
 
 def create():
+    print("Please input the Japanese character (Kanji, Hiragana, or Katakana) and it's English equivalent!")
+    new_word_japanese = input("What is the word in Japanese you'd like to study?")
+    new_word_english = input("What is the English meaning?")
+    new_word = japanese(word_japanese = new_word_japanese, word_english = new_word_english)
+    new_word.save()
+    print('Thanks for adding to the flash cards!')
+
+
+def play():
+    correct = 0
+    incorrect = 0
+    a = int(input("How many words would you like to study this session? "))
+
+    for new_word in FlashCard.select():
+        if a > 0:
+            a -= 1
+            if input(f"{new_word.question}\n") == new_word.answer:
+                correct += 1
+                print(f"Amount of correct: {correct}")
+
+            else:
+                incorrect += 1
+                print(f"Amount of incorrect: {incorrect}")
+                if input("Would you like to see the answer? y/n") == 'y':
+                    print(f"The answer is {new_word.answer}")
+
+
+db.create_tables([japanese])
+menu()
+    
