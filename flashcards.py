@@ -14,14 +14,12 @@ class FlashCards(BaseModel):
     word_english = CharField()
 
 def menu():
-    print("Ready to practice your Japanese? Don't worry, we're not nearly as vigilant as Duolingo. Select 'c' to create your flashcard, 'r' to read through the cards, 'u' to update existing cards, 'd' to delete, and 'p' to test your knowledge!")
+    print("Ready to practice your Japanese? Don't worry, we're not nearly as vigilant as Duolingo. Select 'c' to create your flashcard, 'r' to read through the cards, 'd' to delete, and 'p' to test your knowledge!")
     choice = input('What would you like to do?')
     if choice == 'c':
         create()
     elif choice == 'r': 
         read()
-    elif choice == 'u': 
-        update()
     elif choice == 'd': 
         delete()
     elif choice == 'p': 
@@ -68,6 +66,12 @@ def play():
                 print(f"Amount of incorrect: {incorrect}")
                 if input("Would you like to see the answer? y/n") == 'y':
                     print(f"The answer is {new_word.english}")
+    play_again = str(input("Would you like to practice again? Please type 'y' for yes and 'n' stop your session. "))
+    if play_again == 'y':
+        play()
+        else:
+            print("Thanks for practicing today!")
+            menu()
 
 menu()
     
