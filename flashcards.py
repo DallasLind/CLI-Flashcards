@@ -39,7 +39,7 @@ def create():
 def read():
     for obj in gc.get_objects():
         if isinstance(obj, FlashCards):
-            print obj.new_word
+            print(obj.new_word)
 
 def delete():
     flash = FlashCards.get(FlashCards.id == input(
@@ -66,12 +66,13 @@ def play():
                 print(f"Amount of incorrect: {incorrect}")
                 if input("Would you like to see the answer? y/n") == 'y':
                     print(f"The answer is {new_word.english}")
+    
     play_again = str(input("Would you like to practice again? Please type 'y' for yes and 'n' stop your session. "))
     if play_again == 'y':
         play()
-        else:
+    else:
+            print("")
             print("Thanks for practicing today!")
-            menu()
 
 menu()
     
