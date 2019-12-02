@@ -43,7 +43,13 @@ def read():
         if isinstance(obj, FlashCards):
             print obj.new_word
 
-def 
+def delete():
+    flash = FlashCards.get(FlashCards.id == input(
+        "Please input the ID of the question you'd like to delete" ))
+    FlashCards.delete_instance()
+    FlashCards.save()
+    menu()
+
 
 def play():
     correct = 0
