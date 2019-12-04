@@ -17,8 +17,8 @@ class FlashCards(BaseModel):
 db.create_tables([FlashCards])
 
 def menu():
-    print("Ready to practice your Japanese? Don't worry, we're not nearly as vigilant as Duolingo. Select 'c' to create your flashcard, 'r' to read through the cards, 'd' to delete, and 'p' to test your knowledge!")
-    choice = input('What would you like to do?')
+    print("Ready to practice your Japanese? Don't worry, we're not nearly as vigilant as Duolingo. Select 'c' to create your flashcard, 'r' to read through the cards, 'd' to delete, and 'p' to test your knowledge! ")
+    choice = input('What would you like to do? ')
     if choice == 'c':
         create()
     elif choice == 'r': 
@@ -38,17 +38,20 @@ def create():
     card.save()
     print(f"{card.word_japanese} and {card.word_english}")
     menu()
-        
-def read():
-    for all_cards in FlashCards.select():
-        print(f"\n{FlashCards.word_japanese} and {FlashCards.word_english}")
-        menu()
+
+#query = (FlashCards
+#    .select()
+#)
+
+#def read():
+#    for all_cards in FlashCards.select():
+#        print("Japanese: "+FlashCards.word_japanese+" English: "+FlashCards.word_english)
+#        menu()
 
 def delete():
     flash = FlashCards.get(FlashCards.word_english == input(
         "Please input the English word of the flashcard you'd like to delete" ))
-    FlashCards.delete_instance()
-    FlashCards.save()
+    FlashCards.delete()
     menu()
 
 
