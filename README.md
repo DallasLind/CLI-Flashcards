@@ -12,7 +12,7 @@ What would you like to do?
 
 How many words would you like to study this session? 
 
->5
+>4
 
 茶
 >Tea
