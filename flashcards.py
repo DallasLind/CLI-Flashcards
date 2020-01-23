@@ -1,6 +1,7 @@
 from peewee import *
 from datetime import date
 import gc
+import pygame
 db = PostgresqlDatabase('japanese', user='postgres', password='',
                         host='localhost', port=5432)
 
@@ -39,19 +40,19 @@ def create():
     print(f"{card.word_japanese} and {card.word_english}")
     menu()
 
-#query = (FlashCards
-#    .select()
-#)
 
-#def read():
-#    for all_cards in FlashCards.select():
-#        print("Japanese: "+FlashCards.word_japanese+" English: "+FlashCards.word_english)
-#        menu()
+
+def read():
+    for card in FlashCards.select():
+        print("English: "+card.word_english+" Japanese: "+card.word_japanese)
+        menu()
 
 def delete():
-    flash = FlashCards.get(FlashCards.word_english == input(
-        "Please input the English word of the flashcard you'd like to delete" ))
-    FlashCards.delete()
+    delete_flash = FlashCards.get(FlashCards.word_english == input(
+        "Please input the English word of the flashcard you'd like to delete. " ))
+    card = FlashCards(word_english=english)
+    delete_flash.delete_instance()
+    print(f"Thank you! {card.word_english} has been deleted")
     menu()
 
 

@@ -3,5 +3,6 @@
         "activityBar.background": "#253122",
         "titleBar.activeBackground": "#334430",
         "titleBar.activeForeground": "#F8FAF8"
-    }
+    },
+    "python.pythonPath": "/Users/dallalin2/.local/share/virtualenvs/CLI-Flashcards-plv6BMIJ/bin/python"
 }
