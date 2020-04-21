@@ -49,7 +49,7 @@ I actually found this project refreshing and fun to implement! I think at the mo
 ![](https://img.shields.io/badge/BUILD-IN%20PROGRESS-informational)
 
 ### Future Plans
-* Implement Read and Update Successfully 
+* Implement Update Successfully 
 * Ensure Delete can actually delete duplicates without running into errors
 * Shuffle Deck 
 
