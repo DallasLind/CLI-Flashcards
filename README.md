@@ -1,7 +1,7 @@
 # CLI-Flashcards
 
 ### What is this project?
-This is my first foray into using Python, SQL, and Peewee for a project. What I've created is a simple flashcard game meant to played in the Command Line that tests your knowledge of Japanese! This is one of my projects assigned through the Software Engineering Immersive program at General Assembly. 
+This is my first foray into using Python, PostgreSQL, and Peewee for a project. What I've created is a simple flashcard game meant to played in the Command Line that tests your knowledge of Japanese! This is one of my projects assigned through the Software Engineering Immersive program at General Assembly. 
 
 ### Example
 ```
@@ -40,7 +40,7 @@ Thanks for practicing today!
 ### Languages and Technologies Used
 * Python
 * Peewee
-* SQL
+* Postgres
 
 ### Challenges
 I actually found this project refreshing and fun to implement! I think at the moment that I am struggling with some aspects of Peewee and CRUD functionality, but this is something I'm planning on working on sooner than later.
