@@ -46,6 +46,7 @@ def read():
         print(f"\nJapanese: {card.word_japanese} \nEnglish: {card.word_english}")
     menu()
 
+
 def play():
     correct = 0
     incorrect = 0
@@ -63,7 +64,6 @@ def play():
                 print(f"Amount of incorrect: {incorrect}")
                 if input("Would you like to see the answer? y/n") == 'y':
                     print(f"The answer is {new_word.word_english}")
-    
     play_again = str(input("Would you like to practice again? Please type 'y' for yes and 'n' stop your session. "))
     if play_again == 'y':
         play()
